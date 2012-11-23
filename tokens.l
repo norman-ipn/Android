@@ -61,6 +61,9 @@ L?'(\\.|[^\\'])+'	{ count(); return(CONSTANT); }
 
 L?\"(\\.|[^\\"])*\"	{ count(); return(STRING_LITERAL); }
 
+"/""*"+({D}|{E}|{L}|{H}|{FS}|{IS})* "*"+"/" { count(); return(COMMENT_STRUCT); }
+("/"|"")"*"({D}|{E}|{L}|{FS}|{IS})*  { count(); return(COMMENT_LINE); }
+
 "..."			{ count(); return(ELLIPSIS); }
 ">>="			{ count(); return(RIGHT_ASSIGN); }
 "<<="			{ count(); return(LEFT_ASSIGN); }
