@@ -8,14 +8,14 @@ IS			(u|U|l|L)*
 %{
 #include <stdio.h>
 #include "gramatica.tab.h"
-
+FILE *fp=NULL;
 void count(void);
 %}
 
 %%
 "/*"			{ comment(); }
 
-"auto"			{ count(); return(AUTO); }
+"auto"			{ count(); return(AUTO,fp); }
 "break"			{ count(); return(BREAK); }
 "case"			{ count(); return(CASE); }
 "char"			{ count(); return(CHAR); }
@@ -112,6 +112,11 @@ L?\"(\\.|[^\\"])*\"	{ count(); return(STRING_LITERAL); }
 .			{ /* ignore bad characters */ }
 
 %%
+main(){
+	fp=fopen("code.java","w");
+	yyin=fopen("code.c","r");
+	yylex();
+}
 
 yywrap()
 {

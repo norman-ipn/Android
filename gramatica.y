@@ -11,10 +11,10 @@
 %token CASE DEFAULT IF ELSE SWITCH WHILE DO FOR GOTO CONTINUE BREAK RETURN
 
 %start translation_unit
-%%
 
+%%
 primary_expression
-	: IDENTIFIER
+	: IDENTIFIER {fprintf(fp,yytext);}
 	| CONSTANT
 	| STRING_LITERAL
 	| '(' expression ')'
@@ -178,7 +178,7 @@ storage_class_specifier
 	: TYPEDEF
 	| EXTERN
 	| STATIC
-	| AUTO
+	| AUTO {fprintf(fp,yytext);}
 	| REGISTER
 	;
 
@@ -419,7 +419,6 @@ function_definition
 
 extern char yytext[];
 extern int column;
-
 yyerror(s)
 char *s;
 {
