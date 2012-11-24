@@ -69,6 +69,10 @@ L?\"(\\.|[^\\"])*\"	{ count(); return(STRING_LITERAL); }
 "<"{L}+"."{L}+">"	{ count(); return(LIBRARY); }
 '"'{L}+"."{L}+'"'	{ count(); return(LIBRARY); }
 
+"'"({D}|{E}|{L}|{FS}|{IS})*"'"   { count(); return(CHARS); }
+
+"\\""\"|"\\""n"		{ count(); return(ESCAPE_SEQUENCE); }
+
 "..."			{ count(); return(ELLIPSIS); }
 ">>="			{ count(); return(RIGHT_ASSIGN); }
 "<<="			{ count(); return(LEFT_ASSIGN); }
