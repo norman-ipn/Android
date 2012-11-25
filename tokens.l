@@ -61,15 +61,14 @@ L?'(\\.|[^\\'])+'	{ count(); return(CONSTANT); }
 
 L?\"(\\.|[^\\"])*\"	{ count(); return(STRING_LITERAL); }
 
-"/""*"+({D}|{E}|{L}|{H}|{FS}|{IS})* "*"+"/" { count(); return(COMMENT_STRUCT); }
-("/"|"")"*"({D}|{E}|{L}|{FS}|{IS})*  { count(); return(COMMENT_LINE); }
+"/""*"+({D}|{E}|{L}|{H}|{FS}|{IS})* "*"+"/" { count(); return(COMMENT_STRUCT); }("//"+"/"*) ({D}|{E}|{L}|{H}|{FS}|{IS})* { count(); return(COMMENT_LINE); }
 
 {D}+"."{D}+		{ count(); return(NUMERICAL); }
 
 "<"{L}+"."{L}+">"	{ count(); return(LIBRARY); }
 '"'{L}+"."{L}+'"'	{ count(); return(LIBRARY); }
 
-"'"({D}|{E}|{L}|{FS}|{IS})*"'"   { count(); return(CHARS); }
+"'"({D}|{E}|{L}|{FS}|{IS})*"'"  { count(); return(CHARS); }
 
 "\\""\"|"\\""n"		{ count(); return(ESCAPE_SEQUENCE); }
 
