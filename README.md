@@ -1,8 +1,8 @@
 Android
 =======
 
-Compilador para android
+Compilador de c para android
 
-Este proyecto permitirá compilar código en lengueje C y crear un archivo .apk
-que podrá instalarse en un entorno Android.
+Permitirá compilar código en lengueje C, mostrando sus errores.
 
+Para poder utilizar este programa sera necesario descargar e instalar un archivo .apk en el dispositivo con el sistema operativo atras mencionado.
