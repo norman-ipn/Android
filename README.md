@@ -1,11 +1,10 @@
 Android
 =======
 
-<<<<<<< HEAD
+HEAD
 Compilador para android
-<<<<<<< HEAD
-=======
-=======
+HEAD
+
 Compilador de c para android
 >>>>>>> ffc97edf18a66c14f6aae43558723224b2acef50
 
