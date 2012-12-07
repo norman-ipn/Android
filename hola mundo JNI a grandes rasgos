@@ -1,0 +1,32 @@
+/*
+package holamundo.jni;
+public class CLib{
+
+// los metodos nativos no se desarrollan
+   public native void holaMundo();
+}
+
+}*/
+//de el codigo anterior creado en java, se compila y se crea el HolaMundo.h del cual se agrega la linea del codigo siguiente a el codigo en c:
+/*
+#include<stdio.h>
+#include<jni.h>
+#include "demo_jni_CLib.h"
+  ==> JNIEXPORT void JNICALL Java_demo_jni_CLib_holaMundo (JNIEnv *env, jobject obj)
+   {
+      printf("Hola Mundo\n");
+   }
+*/
+//se crea el archio .dll y queda el codigo siguiente:
+
+package demo.jni;
+
+public class Demo
+{
+   public static void main(String[] args)
+   {
+     System.loadLibrary("demoJNI");
+       CLib clib = new CLib();
+        clib.holaMundo();
+     }
+  }
